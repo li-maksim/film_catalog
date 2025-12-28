@@ -2,10 +2,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import useFetchData from "../../utils/useFetchData";
 import styles from "./MovieList.module.css";
 
-function MovieList() {
-  const url =
-    "https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=1";
-
+function MovieList({ url }) {
   const { data, loading, error } = useFetchData(url);
 
   if (loading) return <p>Загрузка...</p>;
