@@ -1,6 +1,6 @@
 import "./App.css";
 import useFetchData from "../../utils/useFetchData";
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Header from "../Header/Header";
 import MovieList from "../MovieList/MovieList";
 import MovieDetailsDialog from "../MovieDetailsDialog/MovieDetailsDialog";
@@ -13,32 +13,40 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  if (loading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка...</p>;
+  const filteredMovies = useMemo(() => {
+    if (searchQuery === "") {
+      return data.items;
+    }
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
-
-  const openMovieDetails = (movie) => {
-    setSelectedMovie(movie);
-    setIsDialogOpen(true);
-  };
-
-  const closeMovieDetails = () => {
-    setIsDialogOpen(false);
-    setSelectedMovie(null);
-  };
-
-  let filteredMovies = data.items;
-
-  if (searchQuery) {
     const queryLowercase = searchQuery.toLowerCase();
-    filteredMovies = data.items.filter((movie) => {
-      const name = movie.nameRu?.toLowerCase() || "";
+    return data.items.filter((movie) => {
+      const name = movie.nameRu.toLowerCase();
       return name.includes(queryLowercase);
     });
-  }
+  }, [data, searchQuery]);
+
+  const handleSearch = useCallback(
+    (query) => {
+      setSearchQuery(query);
+    },
+    [setSearchQuery]
+  );
+
+  const openMovieDetails = useCallback(
+    (movie) => {
+      setSelectedMovie(movie);
+      setIsDialogOpen(true);
+    },
+    [setSelectedMovie, setIsDialogOpen]
+  );
+
+  const closeMovieDetails = useCallback(() => {
+    setIsDialogOpen(false);
+    setSelectedMovie(null);
+  }, [setIsDialogOpen, setSelectedMovie]);
+
+  if (loading) return <p>Загрузка...</p>;
+  if (error) return <p>Ошибка...</p>;
 
   return (
     <>

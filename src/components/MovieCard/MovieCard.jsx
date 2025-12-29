@@ -4,8 +4,6 @@ function MovieCard({ movie, onClick }) {
   const posterUrl = movie.posterUrl;
   const name = movie.nameRu;
   const year = movie.year;
-  const countries = movie.countries;
-  const genres = movie.genres;
 
   return (
     <article className={styles.movieCard} onClick={() => onClick(movie)}>
