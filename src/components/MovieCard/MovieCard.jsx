@@ -1,6 +1,6 @@
 import styles from "./MovieCard.module.css";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, onClick }) {
   const posterUrl = movie.posterUrl;
   const name = movie.nameRu;
   const year = movie.year;
@@ -8,7 +8,7 @@ function MovieCard({ movie }) {
   const genres = movie.genres;
 
   return (
-    <article className={styles.movieCard}>
+    <article className={styles.movieCard} onClick={() => onClick(movie)}>
       <img
         className={styles.movieCard__image}
         src={posterUrl}

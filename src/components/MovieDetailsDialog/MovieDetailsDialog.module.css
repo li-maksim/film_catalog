@@ -1,0 +1,75 @@
+.movieDetailsDialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.movieDetailsDialog {
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.movieDetailsDialog__content {
+  position: relative;
+  padding: 20px;
+}
+
+.movieDetailsDialog__closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  z-index: 10;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movieDetailsDialog__closeButton:hover {
+  color: #333;
+}
+
+.movieDetailsDialog__header {
+  margin-bottom: 15px;
+}
+
+.movieDetailsDialog__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.movieDetailsDialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.movieDetailsDialog__image {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.movieDetailsDialog__info {
+  flex-grow: 1;
+}
+
+.movieDetailsDialog__info p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
