@@ -1,18 +1,8 @@
 import MovieCard from "../MovieCard/MovieCard";
-import useFetchData from "../../utils/useFetchData";
 import styles from "./MovieList.module.css";
 
-function MovieList({ url }) {
-  const { data, loading, error } = useFetchData(url);
-
-  if (loading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка...</p>;
-
-  console.log(data);
-
-  const movies = data.items;
-
-  if (!movies || movies.length === 0) {
+function MovieList({ movies }) {
+  if (movies.length === 0) {
     return <p>Фильмы не найдены.</p>;
   }
 

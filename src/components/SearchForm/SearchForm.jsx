@@ -6,12 +6,23 @@ function SearchForm({ onSearch }) {
 
   const handleInputChange = (e) => {
     const newQuery = e.target.value;
-    setQuery(newQuery);
+    if (newQuery === "") {
+      onSearch("");
+      setQuery("");
+    } else {
+      setQuery(newQuery);
+      onSearch(query.trim());
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(query.trim());
+  };
+
+  const handleClear = () => {
+    setQuery("");
+    onSearch("");
   };
 
   return (
@@ -26,6 +37,16 @@ function SearchForm({ onSearch }) {
           name="query"
           required
         />
+        {query && (
+          <button
+            type="button"
+            className={styles.searchForm__clearButton}
+            onClick={handleClear}
+            aria-label="Очистить поиск"
+          >
+            &times;
+          </button>
+        )}
         <button
           className={styles.searchForm__button}
           type="submit"

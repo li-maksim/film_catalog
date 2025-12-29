@@ -7,11 +7,12 @@
   display: flex;
   gap: 10px;
   width: 100%;
+  position: relative;
 }
 
 .searchForm__input {
   flex-grow: 1;
-  padding: 10px 15px;
+  padding: 10px 40px 10px 15px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -22,7 +23,12 @@
   border-color: #007bff;
 }
 
-.searchForm__button {
+.searchForm__button:hover {
+  background-color: #0056b3;
+}
+
+.searchForm__button,
+.searchForm__clearButton {
   padding: 10px 15px;
   font-size: 1rem;
   background-color: #007bff;
@@ -31,6 +37,22 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+.searchForm__clearButton {
+  position: absolute;
+  top: 10px;
+  right: 70px;
+  background-color: #ccc;
+  width: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.searchForm__clearButton:hover {
+  background-color: #999;
 }
 
 .searchForm__button:hover {
