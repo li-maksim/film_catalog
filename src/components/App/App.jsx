@@ -15,7 +15,7 @@ function App() {
 
   const filteredMovies = useMemo(() => {
     if (searchQuery === "") {
-      return data.items;
+      return data.items || [];
     }
 
     const queryLowercase = searchQuery.toLowerCase();
@@ -45,13 +45,15 @@ function App() {
     setSelectedMovie(null);
   }, [setIsDialogOpen, setSelectedMovie]);
 
-  if (loading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка...</p>;
-
   return (
     <>
       <Header onSearch={handleSearch} />
-      <MovieList movies={filteredMovies} onCardClick={openMovieDetails} />
+      <MovieList
+        movies={filteredMovies}
+        loading={loading}
+        error={error}
+        onCardClick={openMovieDetails}
+      />
       <MovieDetailsDialog
         movie={selectedMovie}
         isOpen={isDialogOpen}

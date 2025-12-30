@@ -39,10 +39,16 @@
   transition: background-color 0.2s;
 }
 
+.searchForm__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .searchForm__clearButton {
   position: absolute;
   top: 10px;
-  right: 70px;
+  right: 75px;
   background-color: #ccc;
   width: 5px;
   display: flex;
@@ -57,4 +63,10 @@
 
 .searchForm__button:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 320px) {
+  .searchForm__clearButton {
+    right: 65px;
+  }
 }

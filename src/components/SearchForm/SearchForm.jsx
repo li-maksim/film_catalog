@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Search } from "lucide-react";
 import styles from "./SearchForm.module.css";
 
 function SearchForm({ onSearch }) {
@@ -7,11 +8,10 @@ function SearchForm({ onSearch }) {
   const handleInputChange = (e) => {
     const newQuery = e.target.value;
     if (newQuery === "") {
-      onSearch("");
       setQuery("");
+      onSearch("");
     } else {
       setQuery(newQuery);
-      onSearch(query.trim());
     }
   };
 
@@ -52,7 +52,7 @@ function SearchForm({ onSearch }) {
           type="submit"
           aria-label="Поиск"
         >
-          🔍
+          <Search size={16} />
         </button>
       </form>
     </section>

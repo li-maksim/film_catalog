@@ -60,3 +60,9 @@
   color: #666;
   line-height: 1.4;
 }
+
+@media (max-width: 768px) {
+  .movieCard__info {
+    min-height: 50px;
+  }
+}
